@@ -4,7 +4,12 @@ import { useEffect, useState } from "react";
 import { MarkdownDocument } from "@/lib/types";
 import mockData from "./data.json";
 import { generateUUID } from "./utils";
-import { createDocument, getDocuments, saveDocument } from "./localStorage";
+import {
+  createDocument,
+  getDocuments,
+  saveDocument,
+  deleteDocument as deleteDocumentFromLocalStorage,
+} from "./localStorage";
 
 export const useMarkdownDocumentsStore = () => {
   const [markdownDocuments, setMarkdownDocuments] = useState<
@@ -53,6 +58,21 @@ export const useMarkdownDocumentsStore = () => {
     createDocument(newDocument);
   };
 
+  const deleteDocument = (id: string) => {
+    const newDocuments = { ...markdownDocuments };
+    delete newDocuments[id];
+    setMarkdownDocuments(newDocuments);
+    deleteDocumentFromLocalStorage(id);
+
+    let nextDocument = Object.values(newDocuments)[0];
+    if (!nextDocument) {
+      createNewDocument();
+      return;
+    }
+
+    setCurrentDocument(nextDocument);
+  };
+
   const loadMarkdownDocuments = async () => {
     const documents = getDocuments();
     if (documents.length === 0) {
@@ -80,9 +100,30 @@ export const useMarkdownDocumentsStore = () => {
     setDocumentName,
     pickDocument,
     createNewDocument,
+    deleteDocument,
   };
 };
 
 export type MarkdownDocumentsStore = ReturnType<
   typeof useMarkdownDocumentsStore
 >;
+
+export const useOverlayModal = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
+  return {
+    isOpen,
+    openModal,
+    closeModal,
+  };
+};
+
+export type UseOverlayModal = ReturnType<typeof useOverlayModal>;

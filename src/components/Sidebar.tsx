@@ -41,7 +41,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
       </div>
       <div className="mx-3 mt-6 flex flex-col gap-5">
         {Object.values(markdownDocuments).map((doc) => (
-          <SidebarDocument key={doc.name} documentData={doc} />
+          <SidebarDocument key={doc.id} documentData={doc} />
         ))}
       </div>
     </aside>
