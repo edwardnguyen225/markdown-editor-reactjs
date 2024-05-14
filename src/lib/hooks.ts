@@ -42,7 +42,7 @@ export const useMarkdownDocumentsStore = () => {
       id,
       name: "untitled-document.md",
       content: "",
-      createdAt: new Date().toLocaleDateString("en-US"),
+      createdAt: new Date().toISOString(),
     };
 
     setMarkdownDocuments((prev) => ({

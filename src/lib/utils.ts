@@ -1,17 +1,14 @@
-export const formatDate = (dateString: string): string => {
-  const dateParts = dateString.split("-");
-  const year = parseInt(dateParts[2]);
-  const month = parseInt(dateParts[1]) - 1;
-  const day = parseInt(dateParts[0]);
-
-  const date = new Date(year, month, day);
-  const formattedDate = date.toLocaleDateString("en-GB", {
+/**
+ * @param dateIsoString - ISO string of the date
+ * @returns formatted date string in the format of "DD MMM YYYY"
+ */
+export const formatDate = (dateIsoString: string): string => {
+  const date = new Date(dateIsoString);
+  return date.toLocaleDateString("en-GB", {
     day: "numeric",
-    month: "long",
+    month: "short",
     year: "numeric",
   });
-
-  return formattedDate;
 };
 
 export const generateUUID = (): string => {

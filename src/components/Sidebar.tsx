@@ -12,10 +12,12 @@ interface SidebarProps {}
 
 const Sidebar: React.FC<SidebarProps> = () => {
   const { isSidebarOpen } = useContext(SidebarContext);
-  const { markdownDocuments } = useContext(MarkdownDocumentContext);
+  const { markdownDocuments, createNewDocument } = useContext(
+    MarkdownDocumentContext,
+  );
 
   const handleNewDocumentClick = () => {
-    console.log("New document clicked");
+    createNewDocument();
   };
 
   return (
