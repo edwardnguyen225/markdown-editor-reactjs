@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -34,7 +32,6 @@
 
 body {
   color: rgb(var(--color-neutral-700));
-  font-family: "Roboto", sans-serif;
   background-color: rgb(var(--color-neutral-100));
 }
 
@@ -69,7 +66,7 @@ body {
   .preview-h5,
   .preview-h6,
   .preview-p {
-    font-family: "Roboto Slab";
+    font-family: var(--font-roboto-slab);
     font-style: normal;
   }
 
@@ -110,7 +107,7 @@ body {
   }
 
   .preview-p {
-    font-family: "Roboto Slab";
+    font-family: var(--font-roboto-slab);
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -118,7 +115,7 @@ body {
   }
 
   .markdown-code {
-    font-family: "Roboto Mono";
+    font-family: var(--font-roboto-mono);
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
