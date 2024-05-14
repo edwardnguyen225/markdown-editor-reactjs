@@ -1,14 +1,36 @@
 "use client";
+
 import React from "react";
+import { cn } from "@/lib/cn";
 
 interface ButtonProps {
   onClick: () => void;
   children: React.ReactNode;
+  type?: "primary" | "ghost";
+  className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ onClick, children }) => {
+const ColorDictionary = {
+  primary:
+    "bg-orange hover:bg-orange-hover active:bg-orange-hover text-neutral-100",
+  ghost: "bg-gray-500 text-white",
+};
+
+const Button: React.FC<ButtonProps> = ({
+  onClick,
+  type = "primary",
+  className,
+  children,
+}) => {
   return (
-    <button className="" onClick={onClick}>
+    <button
+      className={cn(
+        "flex items-center justify-center gap-2 rounded px-4 py-[10px]",
+        ColorDictionary[type],
+        className,
+      )}
+      onClick={onClick}
+    >
       {children}
     </button>
   );
