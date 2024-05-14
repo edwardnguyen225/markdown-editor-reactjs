@@ -1,7 +1,11 @@
 "use client";
 
 import { cn } from "@/lib/cn";
-import { MarkdownDocumentContext, SidebarContext } from "@/lib/contexts";
+import {
+  MarkdownDocumentContext,
+  OverlayModalContext,
+  SidebarContext,
+} from "@/lib/contexts";
 import Image from "next/image";
 import React, { useContext } from "react";
 import Button from "./Button";
@@ -11,13 +15,14 @@ interface HeaderProps {}
 const Header: React.FC<HeaderProps> = ({}) => {
   const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
   const { currentDocument } = useContext(MarkdownDocumentContext);
+  const { openModal } = useContext(OverlayModalContext);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
   const handleDeleteClick = () => {
-    console.log("Delete clicked");
+    openModal();
   };
 
   const handleSaveClick = () => {
@@ -55,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
             height={16}
             className="h-4 w-auto"
           />
-          <h1 className="heading-m">{currentDocument?.name}</h1>
+          <h1 className="heading-m truncate">{currentDocument?.name}</h1>
         </div>
         <div className="flex gap-2">
           <Button type="ghost" onClick={handleDeleteClick}>
