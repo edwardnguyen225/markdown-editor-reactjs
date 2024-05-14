@@ -13,7 +13,7 @@ interface ButtonProps {
 const ColorDictionary = {
   primary:
     "bg-orange hover:bg-orange-hover active:bg-orange-hover text-neutral-100",
-  ghost: "bg-gray-500 text-white",
+  ghost: "hover:bg-neutral-700 text-white",
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -26,6 +26,7 @@ const Button: React.FC<ButtonProps> = ({
     <button
       className={cn(
         "flex items-center justify-center gap-2 rounded px-4 py-[10px]",
+        "heading-m",
         ColorDictionary[type],
         className,
       )}
