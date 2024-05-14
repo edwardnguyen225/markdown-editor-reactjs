@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
-    color: {
+    colors: {
       transparent: "transparent",
       current: "currentColor",
       orange: "#E46643",
