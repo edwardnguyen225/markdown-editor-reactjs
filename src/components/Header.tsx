@@ -12,21 +12,36 @@ import Button from "./Button";
 
 interface HeaderProps {}
 
-const Header: React.FC<HeaderProps> = ({}) => {
-  const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
-  const { currentDocument } = useContext(MarkdownDocumentContext);
+const DeleteDocumentButton: React.FC = () => {
   const { openModal } = useContext(OverlayModalContext);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const handleDeleteClick = () => {
+  const handleClick = () => {
     openModal();
   };
 
-  const handleSaveClick = () => {
-    console.log("Save clicked");
+  return (
+    <Button onClick={handleClick} type="ghost">
+      <Image src="/icon-delete.svg" alt="Delete" width={14} height={14} />
+    </Button>
+  );
+};
+
+const SaveDocumentButton: React.FC = () => {
+  const { saveCurrentDocument } = useContext(MarkdownDocumentContext);
+
+  return (
+    <Button onClick={saveCurrentDocument}>
+      <Image src="/icon-save.svg" alt="Save" width={14} height={14} />
+    </Button>
+  );
+};
+
+const Header: React.FC<HeaderProps> = ({}) => {
+  const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
+  const { currentDocument } = useContext(MarkdownDocumentContext);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
   };
 
   return (
@@ -62,13 +77,9 @@ const Header: React.FC<HeaderProps> = ({}) => {
           />
           <h1 className="heading-m truncate">{currentDocument?.name}</h1>
         </div>
-        <div className="flex gap-2">
-          <Button type="ghost" onClick={handleDeleteClick}>
-            <Image src="/icon-delete.svg" alt="Delete" width={14} height={14} />
-          </Button>
-          <Button onClick={handleSaveClick}>
-            <Image src="/icon-save.svg" alt="Save" width={14} height={14} />
-          </Button>
+        <div className="flex shrink-0 gap-2">
+          <DeleteDocumentButton />
+          <SaveDocumentButton />
         </div>
       </div>
     </header>

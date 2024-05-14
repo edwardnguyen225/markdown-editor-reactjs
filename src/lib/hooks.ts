@@ -7,7 +7,7 @@ import { generateUUID } from "./utils";
 import {
   createDocument,
   getDocuments,
-  saveDocument,
+  saveDocument as saveDocumentIntoLocalStorage,
   deleteDocument as deleteDocumentFromLocalStorage,
 } from "./localStorage";
 
@@ -31,7 +31,17 @@ export const useMarkdownDocumentsStore = () => {
     if (currentDocument?.id === id) {
       setCurrentDocument(newDocument);
     }
-    saveDocument(newDocument);
+    saveDocumentIntoLocalStorage(newDocument);
+  };
+
+  const saveCurrentDocument = () => {
+    if (!currentDocument) return;
+
+    setMarkdownDocuments((prev) => ({
+      ...prev,
+      [currentDocument.id]: currentDocument,
+    }));
+    saveDocumentIntoLocalStorage(currentDocument);
   };
 
   const pickDocument = (id: string) => {
@@ -101,6 +111,7 @@ export const useMarkdownDocumentsStore = () => {
     pickDocument,
     createNewDocument,
     deleteDocument,
+    saveCurrentDocument,
   };
 };
 
