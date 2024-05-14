@@ -35,7 +35,7 @@ const Header: React.FC<HeaderProps> = ({}) => {
         )}
       >
         {isSidebarOpen ? (
-          <Image src="/icon-close.svg" alt="Menu" width={23} height={14} />
+          <Image src="/icon-close.svg" alt="Menu" width={18} height={18} />
         ) : (
           <Image src="/icon-menu.svg" alt="Menu" width={23} height={14} />
         )}
