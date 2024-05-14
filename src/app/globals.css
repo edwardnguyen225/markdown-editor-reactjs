@@ -2,10 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --color-orange: #e46643;
+  --color-orange-hover: #f39765;
+
+  --color-neutral-100: #ffffff;
+  --color-neutral-200: #f5f5f5;
+  --color-neutral-300: #e4e4e4;
+  --color-neutral-400: #c1c4cb;
+  --color-neutral-500: #7c8187;
+  --color-neutral-600: #5a6069;
+  --color-neutral-700: #35393f;
+  --color-neutral-800: #2b2d31;
+  --color-neutral-900: #1d1f22;
+  --color-neutral-1000: #151619;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -17,17 +33,95 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--color-neutral-700));
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(var(--color-neutral-100));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .heading-m {
+    /* Heading (M) */
+    font-size: 15px;
+    line-height: 18px;
+  }
+
+  .heading-s {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 2px;
+  }
+
+  .body-s {
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .preview-h1,
+  .preview-h2,
+  .preview-h3,
+  .preview-h4,
+  .preview-h5,
+  .preview-h6,
+  .preview-p {
+    font-family: "Roboto Slab";
+    font-style: normal;
+  }
+
+  .preview-h1 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .preview-h2 {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 37px;
+  }
+
+  .preview-h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .preview-h4 {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  .preview-h5 {
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  .preview-h6 {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgb(var(--color-orange));
+  }
+
+  .preview-p {
+    font-family: "Roboto Slab";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .markdown-code {
+    font-family: "Roboto Mono";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
   }
 }
