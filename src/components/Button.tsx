@@ -1,10 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { MouseEventHandler } from "react";
 import { cn } from "@/lib/cn";
 
 interface ButtonProps {
-  onClick: () => void;
+  onClick: MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
   type?: "primary" | "ghost";
   className?: string;

@@ -11,10 +11,16 @@ const OverlayDeleteModal = () => {
 
   if (!isOpen || !currentDocument) return null;
 
+  const handleDelete: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    deleteDocument(currentDocument.id);
+    closeModal();
+  };
+
   return (
     <div
       className={cn(
-        "bg-neutral-1000/50 fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center",
+        "fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-neutral-1000/50",
       )}
       onClick={closeModal}
     >
@@ -30,9 +36,7 @@ const OverlayDeleteModal = () => {
           Are you sure you want to delete the ‘{currentDocument.name}’ document
           and its contents? This action cannot be reversed.
         </p>
-        <Button onClick={() => deleteDocument(currentDocument.id)}>
-          Confirm & Delete
-        </Button>
+        <Button onClick={handleDelete}>Confirm & Delete</Button>
       </div>
     </div>
   );
