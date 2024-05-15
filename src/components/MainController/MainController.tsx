@@ -7,7 +7,7 @@ import Preview from "./Preview";
 import { MarkdownDocumentContext } from "@/lib/contexts";
 
 const MainController: React.FC = () => {
-  const [isShowingPreview, setIsShowingPreview] = useState(false);
+  const [isShowingPreview, setIsShowingPreview] = useState(true);
   const { currentDocument, updateCurrentDocument } = useContext(
     MarkdownDocumentContext,
   );
@@ -30,7 +30,10 @@ const MainController: React.FC = () => {
   return (
     <div>
       {isShowingPreview ? (
-        <Preview onClickHidePreview={() => setIsShowingPreview(false)} />
+        <Preview
+          md={md}
+          onClickHidePreview={() => setIsShowingPreview(false)}
+        />
       ) : (
         <Editor
           md={md}

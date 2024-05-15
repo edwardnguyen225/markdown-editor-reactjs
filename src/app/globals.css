@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./preview.css";
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -37,15 +39,11 @@
 }
 
 body {
-  color: rgb(var(--color-neutral-700));
-  background-color: rgb(var(--color-neutral-100));
+  color: var(--color-neutral-700);
+  background-color: var(--color-neutral-100);
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
   .heading-m {
     /* Heading (M) */
     font-size: 15px;
@@ -63,68 +61,5 @@ body {
     font-weight: 300;
     font-size: 13px;
     line-height: 15px;
-  }
-
-  .preview-h1,
-  .preview-h2,
-  .preview-h3,
-  .preview-h4,
-  .preview-h5,
-  .preview-h6,
-  .preview-p {
-    font-family: var(--font-roboto-slab);
-    font-style: normal;
-  }
-
-  .preview-h1 {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 42px;
-  }
-
-  .preview-h2 {
-    font-weight: 400;
-    font-size: 28px;
-    line-height: 37px;
-  }
-
-  .preview-h3 {
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 32px;
-  }
-
-  .preview-h4 {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 26px;
-  }
-
-  .preview-h5 {
-    font-size: 16px;
-    line-height: 21px;
-  }
-
-  .preview-h6 {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 18px;
-    color: rgb(var(--color-orange));
-  }
-
-  .preview-p {
-    font-family: var(--font-roboto-slab);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-  }
-
-  .markdown-code {
-    font-family: var(--font-roboto-mono);
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
   }
 }

@@ -1,0 +1,138 @@
+.preview {
+  color: var(--color-neutral-500);
+}
+
+.preview-h1,
+.preview-h2,
+.preview-h3,
+.preview-h4,
+.preview-h5,
+.preview-h6,
+.preview-p {
+  font-family: var(--font-roboto-slab);
+  font-style: normal;
+  color: var(--color-neutral-700);
+}
+
+.preview-p {
+  font-family: var(--font-roboto-slab);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-neutral-500);
+}
+
+.markdown-code {
+  font-family: var(--font-roboto-mono);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: var(--color-neutral-700);
+}
+
+.preview-h1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 42px;
+}
+
+.preview-h2 {
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 37px;
+}
+
+.preview-h3 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.preview-h4 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.preview-h5 {
+  font-size: 16px;
+  line-height: 21px;
+}
+
+.preview-h6 {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--color-orange);
+}
+
+.preview > * + * {
+  margin-top: 20px;
+}
+
+.preview > .code-container {
+  padding: 24px;
+  background-color: var(--color-neutral-200);
+  border-radius: 4px;
+  text-wrap: pretty;
+}
+
+.preview-blockquote {
+  padding: 16px;
+  background-color: var(--color-neutral-200);
+  border-left: 4px solid var(--color-orange);
+  border-radius: 4px;
+}
+
+.preview-blockquote > * {
+  color: var(--color-neutral-700);
+}
+
+.preview a {
+  text-decoration: underline;
+}
+
+.preview a:hover {
+  color: var(--color-orange-hover);
+}
+
+.preview ul,
+.preview ol {
+  list-style-position: inside;
+}
+
+.preview ul > * + *,
+.preview ol > * + * {
+  margin-top: 4px;
+}
+
+.preview ul > li {
+  list-style-type: disc;
+  padding-left: 0.5rem;
+  display: flex;
+  gap: 16px;
+}
+
+.preview ul > li::before {
+  margin: 11px 0 0 0;
+  flex: 0 0 auto;
+  content: "";
+  width: 3px;
+  height: 3px;
+  border-radius: 100%;
+  background-color: var(--color-orange);
+}
+
+.preview ol > li {
+  padding-left: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.preview ol > li::before {
+  content: counter(list-item) ".";
+  counter-increment: list-item;
+  color: var(--nutmeg);
+}

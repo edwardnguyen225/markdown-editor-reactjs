@@ -1,14 +1,23 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { marked } from "@/lib/marked";
 
 interface PreviewProps {
+  md: string;
   onClickHidePreview: () => void;
 }
 
-const Preview: React.FC<PreviewProps> = ({ onClickHidePreview }) => {
+const Preview: React.FC<PreviewProps> = ({ md, onClickHidePreview }) => {
+  const rawMarkup = useMemo(
+    () => ({
+      __html: marked(md),
+    }),
+    [md],
+  );
+
   return (
     <section className={cn("size-full", "relative top-14", "flex flex-col")}>
       <div
@@ -35,7 +44,11 @@ const Preview: React.FC<PreviewProps> = ({ onClickHidePreview }) => {
           />
         </button>
       </div>
-      <div>Preview here</div>
+      <div
+        className={cn("preview p-4", "overflow-y-scroll")}
+        style={{ height: "var(--editor-height)" }}
+        dangerouslySetInnerHTML={rawMarkup}
+      />
     </section>
   );
 };
