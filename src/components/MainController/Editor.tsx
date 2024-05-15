@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React from "react";
 import { cn } from "@/lib/cn";
 import { IconEye } from "../icons";
 
@@ -9,15 +8,19 @@ interface EditorProps {
   md: string;
   handleMdChange: (value: string) => void;
   onClickShowPreview: () => void;
+  className?: string;
 }
 
 const Editor: React.FC<EditorProps> = ({
   md,
   handleMdChange,
   onClickShowPreview,
+  className,
 }) => {
   return (
-    <section className={cn("size-full", "relative top-14", "flex flex-col")}>
+    <section
+      className={cn("size-full", "relative top-14", "flex flex-col", className)}
+    >
       <div
         className={cn(
           "pl-4 pr-2",
@@ -34,6 +37,7 @@ const Editor: React.FC<EditorProps> = ({
             "flex size-8 items-center justify-center",
             "rounded hover:bg-neutral-400",
             "dark:hover:bg-neutral-700",
+            "md:hidden",
           )}
         >
           <IconEye />

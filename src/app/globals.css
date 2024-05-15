@@ -43,6 +43,11 @@ body {
   background-color: var(--color-neutral-100);
 }
 
+.dark body {
+  color: var(--color-neutral-100);
+  background-color: var(--color-neutral-1000);
+}
+
 @layer utilities {
   .heading-m {
     /* Heading (M) */

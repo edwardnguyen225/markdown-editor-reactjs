@@ -27,8 +27,9 @@ const OverlayDeleteModal = () => {
     >
       <div
         className={cn(
-          "mx-4",
-          "rounded-lg p-6",
+          "mx-4 p-6",
+          "w-[343px]",
+          "rounded-lg",
           "flex flex-col gap-4",
           "bg-neutral-100 dark:bg-neutral-900",
         )}
