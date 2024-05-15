@@ -21,14 +21,16 @@ const OverlayDeleteModal = () => {
     <div
       className={cn(
         "fixed left-0 top-0 z-50 flex h-full w-full items-center justify-center bg-neutral-1000/50",
+        "dark:bg-neutral-500/50",
       )}
       onClick={closeModal}
     >
       <div
         className={cn(
           "mx-4",
-          "rounded-lg bg-neutral-100 p-6",
+          "rounded-lg p-6",
           "flex flex-col gap-4",
+          "bg-neutral-100 dark:bg-neutral-900",
         )}
       >
         <h1 className="preview-h4">Delete this document?</h1>

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/cn";
+import { IconEye } from "../icons";
 
 interface EditorProps {
   md: string;
@@ -22,23 +23,20 @@ const Editor: React.FC<EditorProps> = ({
           "pl-4 pr-2",
           "h-[42px] w-full",
           "flex items-center justify-between",
-          "bg-neutral-200",
+          "bg-neutral-200 text-neutral-500",
+          "dark:bg-neutral-900 dark:text-neutral-400",
         )}
       >
-        <p className="heading-s uppercase text-neutral-500">Markdown</p>
+        <p className="heading-s uppercase ">Markdown</p>
         <button
           onClick={onClickShowPreview}
           className={cn(
             "flex size-8 items-center justify-center",
             "rounded hover:bg-neutral-400",
+            "dark:hover:bg-neutral-700",
           )}
         >
-          <Image
-            src="/icon-show-preview.svg"
-            alt="Preview"
-            width={16}
-            height={11}
-          />
+          <IconEye />
         </button>
       </div>
       <textarea
@@ -54,6 +52,7 @@ const Editor: React.FC<EditorProps> = ({
           "resize-none",
           "outline-none",
           "border-none",
+          "dark:bg-neutral-1000 dark:text-neutral-400",
         )}
       />
     </section>

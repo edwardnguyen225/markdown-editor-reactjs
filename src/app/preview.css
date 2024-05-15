@@ -136,3 +136,29 @@
   counter-increment: list-item;
   color: var(--nutmeg);
 }
+
+.dark .preview,
+.dark .preview-p {
+  color: var(--color-neutral-400);
+}
+
+.dark .preview-h1,
+.dark .preview-h2,
+.dark .preview-h3,
+.dark .preview-h4,
+.dark .preview-h5 {
+  color: var(--color-neutral-100);
+}
+
+.dark .markdown-code {
+  color: var(--color-neutral-100);
+}
+
+.dark .preview-blockquote,
+.dark .preview > .code-container {
+  background-color: var(--color-neutral-800);
+}
+
+.dark .preview-blockquote > * {
+  color: var(--color-neutral-100);
+}
