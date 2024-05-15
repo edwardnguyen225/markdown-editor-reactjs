@@ -18,6 +18,9 @@ const config: Config = {
         sans: ["var(--font-roboto)"],
         mono: ["var(--font-roboto-mono)"],
       },
+      screens: {
+        "2xl": "1440px",
+      },
     },
     colors: {
       transparent: "transparent",

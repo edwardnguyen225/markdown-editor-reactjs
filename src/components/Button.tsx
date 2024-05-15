@@ -25,7 +25,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        "flex items-center justify-center gap-2 rounded px-4 py-[10px]",
+        "flex h-10 items-center justify-center gap-2 rounded px-4 py-[10px]",
         "heading-m",
         ColorDictionary[type],
         className,

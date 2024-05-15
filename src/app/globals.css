@@ -25,9 +25,16 @@
 
   --header-height: 56px;
   --controller-header-height: 42px;
+  --editor-top: var(--header-height) + var(--controller-header-height);
   --editor-height: calc(
     100vh - var(--header-height) - var(--controller-header-height)
   );
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 72px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -93,4 +100,8 @@ body {
 
 .dark ::-webkit-scrollbar-thumb:hover {
   background-color: var(--color-neutral-400);
+}
+
+.main-controller > section {
+  top: var(--header-height);
 }

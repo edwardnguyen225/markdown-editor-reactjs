@@ -44,10 +44,14 @@ const Sidebar: React.FC<SidebarProps> = () => {
     >
       <div className="flex flex-1 flex-col overflow-hidden">
         <div className="mx-6">
-          <Image src="/logo.svg" alt="Markdown" width={131} height={18} />
-          <h2 className="heading-s mt-[27px] uppercase text-neutral-500">
-            My document
-          </h2>
+          <Image
+            src="/logo.svg"
+            alt="Markdown"
+            width={131}
+            height={18}
+            className="mb-[27px] 2xl:hidden"
+          />
+          <h2 className="heading-s uppercase text-neutral-500">My document</h2>
           <Button onClick={handleNewDocumentClick} className="mt-[29px] w-full">
             <span>+</span>
             <span>New Document</span>

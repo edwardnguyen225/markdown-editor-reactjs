@@ -19,7 +19,7 @@ const Editor: React.FC<EditorProps> = ({
 }) => {
   return (
     <section
-      className={cn("size-full", "relative top-14", "flex flex-col", className)}
+      className={cn("size-full", "relative", "flex flex-col", className)}
     >
       <div
         className={cn(

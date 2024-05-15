@@ -27,12 +27,12 @@ const Preview: React.FC<PreviewProps> = ({
 
   return (
     <section
-      className={cn("size-full", "relative top-14", "flex flex-col", className)}
+      className={cn("size-full", "relative ", "flex flex-col", className)}
     >
       <div
         className={cn(
           "pl-4 pr-2",
-          "h-[42px] w-full",
+          "h-[var(--controller-header-height)] w-full",
           "flex items-center justify-between",
           "bg-neutral-200 text-neutral-500",
           "dark:bg-neutral-900 dark:text-neutral-400",

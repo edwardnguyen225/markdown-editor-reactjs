@@ -45,7 +45,7 @@ const MainController: React.FC = () => {
   };
 
   return (
-    <div className={cn("flex")}>
+    <div className={cn("flex", "main-controller")}>
       <Editor
         md={md}
         handleMdChange={handleMdChange}
