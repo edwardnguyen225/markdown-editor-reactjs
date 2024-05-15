@@ -20,6 +20,12 @@
   --color-neutral-800: #2b2d31;
   --color-neutral-900: #1d1f22;
   --color-neutral-1000: #151619;
+
+  --header-height: 56px;
+  --controller-header-height: 42px;
+  --editor-height: calc(
+    100vh - var(--header-height) - var(--controller-header-height)
+  );
 }
 
 @media (prefers-color-scheme: dark) {

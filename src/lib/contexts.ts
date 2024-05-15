@@ -19,7 +19,8 @@ export const MarkdownDocumentContext = createContext<MarkdownDocumentsStore>({
   pickDocument: (id: string) => {},
   createNewDocument: () => {},
   deleteDocument: (id: string) => {},
-  saveCurrentDocument: () => {},
+  updateCurrentDocument: (content: string) => {},
+  saveIntoLocalStorage: () => {},
 });
 
 export const OverlayModalContext = createContext<UseOverlayModal>({

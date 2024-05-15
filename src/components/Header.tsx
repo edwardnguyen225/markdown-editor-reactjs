@@ -27,10 +27,10 @@ const DeleteDocumentButton: React.FC = () => {
 };
 
 const SaveDocumentButton: React.FC = () => {
-  const { saveCurrentDocument } = useContext(MarkdownDocumentContext);
+  const { saveIntoLocalStorage } = useContext(MarkdownDocumentContext);
 
   return (
-    <Button onClick={saveCurrentDocument}>
+    <Button onClick={saveIntoLocalStorage}>
       <Image src="/icon-save.svg" alt="Save" width={14} height={14} />
     </Button>
   );
@@ -45,7 +45,14 @@ const Header: React.FC<HeaderProps> = ({}) => {
   };
 
   return (
-    <header className={cn("h-14", "flex", "bg-neutral-800")}>
+    <header
+      className={cn(
+        "h-14 w-full",
+        "flex flex-1",
+        "bg-neutral-800",
+        "fixed top-0",
+      )}
+    >
       <button
         onClick={toggleSidebar}
         className={cn(
@@ -67,7 +74,9 @@ const Header: React.FC<HeaderProps> = ({}) => {
           "flex justify-between",
         )}
       >
-        <div className={cn("ml-4", "flex items-center justify-center gap-4")}>
+        <div
+          className={cn("ml-4", "flex flex-1 items-center justify-start gap-4")}
+        >
           <Image
             src="/icon-document.svg"
             alt="Markdown"

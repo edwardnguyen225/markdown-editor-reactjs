@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import Sidebar from "@/components/Sidebar";
 import Header from "@/components/Header";
@@ -12,6 +11,7 @@ import {
 } from "@/lib/contexts";
 import { useMarkdownDocumentsStore, useOverlayModal } from "@/lib/hooks";
 import OverlayDeleteModal from "@/components/OverlayDeleteModal";
+import MainController from "@/components/MainController";
 
 export default function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -32,22 +32,13 @@ export default function Home() {
             <Sidebar />
             <main
               className={cn(
-                "relative top-0 size-full",
+                "relative size-full",
                 isSidebarOpen ? "left-[250px]" : "left-0",
                 "transition-all",
               )}
             >
               <Header />
-              <section className="content">
-                <h1>My Page</h1>
-                <p>Welcome to my page!</p>
-                <Image
-                  src="/vercel.svg"
-                  alt="Vercel Logo"
-                  width={72}
-                  height={16}
-                />
-              </section>
+              <MainController />
             </main>
           </div>
         </SidebarContext.Provider>

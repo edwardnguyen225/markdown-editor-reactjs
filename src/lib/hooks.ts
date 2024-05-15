@@ -9,6 +9,8 @@ import {
   getDocuments,
   saveDocument as saveDocumentIntoLocalStorage,
   deleteDocument as deleteDocumentFromLocalStorage,
+  setCurrentOpenDocument,
+  getPreviousOpenDocument,
 } from "./localStorage";
 
 export const useMarkdownDocumentsStore = () => {
@@ -34,14 +36,20 @@ export const useMarkdownDocumentsStore = () => {
     saveDocumentIntoLocalStorage(newDocument);
   };
 
-  const saveCurrentDocument = () => {
+  const updateCurrentDocument = (content: string) => {
     if (!currentDocument) return;
 
+    const newDocument = { ...currentDocument, content };
+    setCurrentDocument(newDocument);
+  };
+
+  const saveIntoLocalStorage = () => {
+    if (!currentDocument) return;
+    saveDocumentIntoLocalStorage(currentDocument);
     setMarkdownDocuments((prev) => ({
       ...prev,
       [currentDocument.id]: currentDocument,
     }));
-    saveDocumentIntoLocalStorage(currentDocument);
   };
 
   const pickDocument = (id: string) => {
@@ -49,6 +57,7 @@ export const useMarkdownDocumentsStore = () => {
     if (!document) return;
 
     setCurrentDocument(document);
+    setCurrentOpenDocument(id);
   };
 
   const createNewDocument = () => {
@@ -83,10 +92,26 @@ export const useMarkdownDocumentsStore = () => {
     setCurrentDocument(nextDocument);
   };
 
-  const loadMarkdownDocuments = async () => {
+  const loadDefaultDocuments = () => {
+    const newMarkdownDocuments = mockData.reduce(
+      (acc, doc) => {
+        acc[doc.id] = doc;
+        return acc;
+      },
+      {} as Record<string, MarkdownDocument>,
+    );
+    setMarkdownDocuments(newMarkdownDocuments);
+    setCurrentDocument(mockData[0]);
+    for (const doc of mockData) {
+      createDocument(doc);
+    }
+  };
+
+  const loadMarkdownDocuments = () => {
     const documents = getDocuments();
     if (documents.length === 0) {
-      documents.push(...mockData);
+      loadDefaultDocuments();
+      return;
     }
 
     const newMarkdownDocuments = documents.reduce(
@@ -97,11 +122,12 @@ export const useMarkdownDocumentsStore = () => {
       {} as Record<string, MarkdownDocument>,
     );
     setMarkdownDocuments(newMarkdownDocuments);
-    setCurrentDocument(documents[0]);
+    setCurrentDocument(getPreviousOpenDocument());
   };
 
   useEffect(() => {
     loadMarkdownDocuments();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
@@ -111,7 +137,8 @@ export const useMarkdownDocumentsStore = () => {
     pickDocument,
     createNewDocument,
     deleteDocument,
-    saveCurrentDocument,
+    updateCurrentDocument,
+    saveIntoLocalStorage,
   };
 };
 

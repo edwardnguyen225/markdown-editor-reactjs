@@ -2,6 +2,7 @@ import { MarkdownDocument } from "./types";
 
 const KEY_PREFIX = "markdown-editor";
 const DOCUMENT_IDS_KEY = "documentIds";
+const CURRENT_OPEN_DOCUMENT_KEY = "currentOpenDocument";
 
 const getLocalStorageKey = (key: string) => `${KEY_PREFIX}:${key}`;
 const getLocalStorageValue = (key: string) => {
@@ -44,4 +45,18 @@ export const deleteDocument = (id: string) => {
 
 export const updateDocument = (doc: MarkdownDocument) => {
   saveToLocalStorage(doc.id, doc);
+};
+
+export const getPreviousOpenDocument: () =>
+  | MarkdownDocument
+  | undefined = () => {
+  const ids = getDocumentIds();
+  const previousDocId: string | null =
+    getLocalStorageValue(CURRENT_OPEN_DOCUMENT_KEY) ?? ids[0];
+
+  return getDocuments().find((doc) => doc.id === previousDocId);
+};
+
+export const setCurrentOpenDocument = (id: string) => {
+  saveToLocalStorage(CURRENT_OPEN_DOCUMENT_KEY, id);
 };
