@@ -7,7 +7,7 @@ import {
   SidebarContext,
 } from "@/lib/contexts";
 import Image from "next/image";
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Button from "./Button";
 
 interface HeaderProps {}
@@ -38,8 +38,16 @@ const SaveDocumentButton: React.FC = () => {
 };
 
 const Header: React.FC<HeaderProps> = ({}) => {
+  const [documentName, setDocumentName] = useState("");
   const { isSidebarOpen, setIsSidebarOpen } = useContext(SidebarContext);
-  const { currentDocument } = useContext(MarkdownDocumentContext);
+  const { currentDocument, setDocumentName: saveDocumentName } = useContext(
+    MarkdownDocumentContext,
+  );
+
+  useEffect(() => {
+    setDocumentName(currentDocument?.name ?? "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentDocument?.id]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -101,7 +109,15 @@ const Header: React.FC<HeaderProps> = ({}) => {
             <p className="body-m mb-1 hidden text-neutral-500 md:block">
               Document Name
             </p>
-            <h1 className="heading-m truncate">{currentDocument?.name}</h1>
+            <input
+              type="text"
+              value={documentName}
+              onChange={(e) => setDocumentName(e.target.value)}
+              onBlur={() =>
+                saveDocumentName(currentDocument?.id ?? "", documentName)
+              }
+              className="heading-m truncate border-neutral-500 border-transparent bg-transparent hover:border-b focus:border-b-2"
+            />
           </div>
         </div>
         <div className="flex shrink-0 items-center gap-2">
