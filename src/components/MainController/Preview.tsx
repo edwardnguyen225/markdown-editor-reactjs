@@ -51,11 +51,11 @@ const Preview: React.FC<PreviewProps> = ({
         </button>
       </div>
       <div
-        className={cn("preview p-4", "overflow-y-scroll")}
+        className={cn("p-4", "overflow-y-scroll")}
         style={{ height: "var(--editor-height)" }}
       >
         <div
-          className="mx-auto xl:max-w-2xl"
+          className="preview mx-auto xl:max-w-2xl"
           dangerouslySetInnerHTML={rawMarkup}
         />
       </div>
