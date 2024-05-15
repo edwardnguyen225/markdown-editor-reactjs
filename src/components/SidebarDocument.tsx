@@ -23,7 +23,7 @@ const SidebarDocument: React.FC<SidebarDocumentProps> = ({ documentData }) => {
     <div
       role="button"
       className={cn(
-        "p-3",
+        "px-3 py-6",
         "flex h-9 w-full shrink-0 items-center justify-start gap-4 overflow-hidden",
         "rounded",
         "hover:bg-neutral-600",

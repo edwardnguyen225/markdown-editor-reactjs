@@ -53,7 +53,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
             <span>New Document</span>
           </Button>
         </div>
-        <div className="mt-6 flex flex-col gap-5 overflow-y-scroll px-3">
+        <div className="mt-6 flex flex-col gap-3 overflow-y-scroll px-3">
           {Object.values(markdownDocuments).map((doc) => (
             <SidebarDocument key={doc.id} documentData={doc} />
           ))}
