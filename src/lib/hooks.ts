@@ -41,6 +41,7 @@ export const useMarkdownDocumentsStore = () => {
 
     const newDocument = { ...currentDocument, content };
     setCurrentDocument(newDocument);
+    saveDocumentIntoLocalStorage(newDocument);
   };
 
   const saveIntoLocalStorage = () => {

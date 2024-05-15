@@ -37,7 +37,7 @@ const MainController: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentDocument?.id]);
 
-  const debouncedSave = debounce(updateCurrentDocument, 1000);
+  const debouncedSave = debounce(updateCurrentDocument, 5000);
 
   const handleMdChange = (val: string) => {
     setMd(val);
